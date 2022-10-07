@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
-  url = 'https://back-app-pln.herokuapp.com/';
+  url = 'https://back-app-pln.herokuapp.com';
   httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private http:HttpClient) {}
