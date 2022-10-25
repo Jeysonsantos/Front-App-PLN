@@ -13,6 +13,7 @@ import { AppComponent } from '../app.component';
 export class NovoLinkComponent implements OnInit {
   texto = {id:1,link:'',resumo:''};
   public myForm: FormGroup;
+  resumo = ''
   
 
   constructor(private api:ApiService, 
@@ -27,12 +28,12 @@ export class NovoLinkComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
   salvar(){
     this.api.salvarlink(this.texto).subscribe(
-      data => {
-        this.appcomponent.dados.push(this.texto);
-        this.router.navigate(['resumo-texto',this.texto.id])
+      (data:any) => {
+        console.log(data)
+        this.resumo = data['resumo']
       },
       error => {
         alert("Link inválido")
@@ -40,6 +41,7 @@ export class NovoLinkComponent implements OnInit {
     )
   }
   voltar(){
+    this.resumo=''
     this.router.navigate([''])
   }
   get m(){
@@ -48,4 +50,5 @@ export class NovoLinkComponent implements OnInit {
   onSubmit(){
     console.log(this.myForm.value);
   }
+
 }

@@ -1,6 +1,5 @@
-<h1>Resumo de texto</h1>
 
-<div>
+<div *ngIf="!resumo">
   <form [formGroup]="myForm" (ngSubmit)="onSubmit()" novalidate>
     <div>
       <label for="">Digite a URL</label>
@@ -13,4 +12,19 @@
       <br>
     </div>
   </form>
+</div>
+<div *ngIf="resumo">
+  <div>
+    <h1>
+        <div style="text-align: left;font-size: 30px;">Sumarização: </div>
+        <br>
+        <html style="font-size: 20px;font-family: 'Times New Roman', Times, serif;">{{ resumo }}
+        </html>
+
+    </h1>
+    <p style="font-size: 15px;"><a href="{{texto.link}}" target="_blank"> {{texto.link}}</a></p>
+</div>
+
+<br>
+<button (click)="voltar()">Voltar</button> 
 </div>
